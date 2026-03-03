@@ -1,6 +1,6 @@
 # Bodycam Overlay
 
-Ein minimalistisches Overlay für Obs -> zeigt REC-Status, Gerät, Benutzer, Callsign, Datum, Uhrzeit und Zeitzone.
+Ein minimalistisches OBS-Overlay mit REC-Status, Gerät, Benutzer, Callsign, Datum, Uhrzeit und Zeitzone.
 
 ### Features
 - Blinkender REC-Punkt
@@ -8,6 +8,7 @@ Ein minimalistisches Overlay für Obs -> zeigt REC-Status, Gerät, Benutzer, Cal
 - Echtzeit Datum & Uhrzeit mit Sekunden
 - Zeitzone automatisch
 - Transparentes Overlay, Schrift: Share Tech Mono
+- verschiedene Overlays
 
 ### Konfiguration
 Im `<script>`-Block:
@@ -19,10 +20,13 @@ const CONFIG = {
     deviceName: "Axon Body 3"
 };
 ````
-## Usage (OBS Einbindung)
 
+## Usage (OBS Einbindung)
 ### 1. Datei speichern
-Speichere den Code  besten in einem festen Ordner, den du nicht verschiebst.
+Speichere die gewünschte Overlay-Datei in einem festen Ordner, der nicht verschoben wird.
+**Hinweis:** Es gibt zwei Varianten:
+- **Bodycam 1 (`bodycam.html`)** → Standard-Overlay mit allen Elementen
+- **Bodycam 2 (`bodycam2.html`)** → Clean-Overlay (ohne zusätzliche UI-Elemente)
 
 ### 2. In OBS einbinden
 1. OBS öffnen
@@ -31,8 +35,12 @@ Speichere den Code  besten in einem festen Ordner, den du nicht verschiebst.
 4. **Browser** auswählen
 5. Namen vergeben (z.B. Bodycam Overlay)
 6. **Lokale Datei** aktivieren
-7. Deine `bodycam.html` auswählen
+7. Die `bodycam.html` auswählen
 8. Größe anpassen
 
-## Preview
-![Overlay Preview](preview.png)
+# Overlay Preview
+## Preview 1 - Enthält alle UI-Elemente.
+![Overlay Preview](storage/preview.png)
+
+## Preview 2 - Ohne zusätzliche UI-Elemente.
+![Overlay Preview2](storage/preview2.png)
