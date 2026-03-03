@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --text-color: #FFFFFF;
+        --outline-color: rgba(0, 0, 0, 0.8);
+        --font-size: 14px;
+    }
+
+    body {
+        margin: 0;
+        background: transparent;
+        font-family: 'Share Tech Mono', monospace;
+        color: var(--text-color);
+        font-variant-numeric: tabular-nums;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .minimalist-clock {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        display: flex;
+        gap: 8px;
+        font-size: var(--font-size);
+        letter-spacing: 1px;
+
+        text-shadow: 
+            -1px -1px 0 var(--outline-color),  
+             1px -1px 0 var(--outline-color),
+            -1px  1px 0 var(--outline-color),
+             1px  1px 0 var(--outline-color),
+             2px  2px 4px rgba(0,0,0,0.5);
+    }
+
+    .sep { 
+        opacity: 0.6;
+    }
+</style>
+</head>
+<body>
+
+<div class="minimalist-clock">
+    <span id="d"></span>
+    <span class="sep">|</span>
+    <span id="t"></span>
+</div>
+
+<script>
+const dEl = document.getElementById("d");
+const tEl = document.getElementById("t");
+
+function tick() {
+    const n = new Date();
+    const day = String(n.getDate()).padStart(2,'0');
+    const month = String(n.getMonth() + 1).padStart(2,'0');
+    const year = String(n.getFullYear()).slice(-2);
+    dEl.textContent = `${day}.${month}.${year}`;
+
+    const h = String(n.getHours()).padStart(2,'0');
+    const m = String(n.getMinutes()).padStart(2,'0');
+    const s = String(n.getSeconds()).padStart(2,'0');
+    tEl.textContent = `${h}:${m}:${s}`;
+
+    setTimeout(tick, 1000 - n.getMilliseconds());
+}
+tick();
+</script>
+</body>
+</html>
