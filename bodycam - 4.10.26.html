@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Bodycam Overlay</title>
+<script>
+const CONFIG = {
+    player: "David Laker | [12-200]"
+};
+</script>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: transparent;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 14px;
+        color: #F8F8FF;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0,0,0,0.55);
+        padding: 10px 14px;
+        border-radius: 10px;
+        text-align: right;
+        letter-spacing: 1px;
+        text-shadow: 0 0 4px rgba(255,255,255,0.6);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .line { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="overlay">
+    <div class="line" id="player"></div>
+    <div class="line"><span id="date"></span> | <span id="time"></span></div>
+</div>
+
+<script>
+const dateEl = document.getElementById("date");
+const timeEl = document.getElementById("time");
+document.getElementById("player").textContent = CONFIG.player;const pad = n => (n < 10 ? "0" : "") + n;
+let lastDay = -1;
+
+function tick() {
+    const now = new Date();
+    const day = now.getDate();
+
+    if (day !== lastDay) {
+        lastDay = day;
+        dateEl.textContent = pad(day) + "." + pad(now.getMonth() + 1) + "." + now.getFullYear();
+    }
+
+    timeEl.textContent = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds());
+
+    setTimeout(tick, 1000 - now.getMilliseconds());
+}
+
+tick();
+</script>
+</body>
+</html>
